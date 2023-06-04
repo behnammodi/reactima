@@ -87,3 +87,22 @@ const [show, setShow] = useState(false);
 ```
 
 Inside the Animation component, fill is set to "both" to maintain the final state of the animation. The direction property is dynamically controlled by the show flag. When show is true, the animation plays in the normal direction. 
+
+## How to use it:
+
+Install:
+```bash
+npm install reactima
+# or
+yard add reactima
+```
+
+Import:
+```js
+import Animation from 'reactima';
+```
+
+
+
+
+
