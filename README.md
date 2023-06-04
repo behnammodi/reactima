@@ -1,6 +1,8 @@
 ## Reactima: Animation Library for React Projects
 
-Here is a basic example showcasing the usage of `reactima` in a React project:
+Here are some basic example showcasing the usage of `reactima` in a React project:
+
+## The first example:
 
 https://codesandbox.io/p/sandbox/reactima-forked-yinnjk
 
@@ -20,3 +22,20 @@ In this example, we have implemented an animation where a card component moves f
 The card component remains unchanged in this example and only requires `forwardRed` to function properly.
 
 
+## The second example:
+
+https://codesandbox.io/p/sandbox/reactima-example-1-forked-b9njfx
+
+In this example, we have implemented an animation where a card component continuously rotates. We achieve this effect by using the `iterations` prop with a value of `Infinity`.
+
+```jsx
+<Animation
+  duration={1000}
+  iterations={Infinity}
+  keyframes={[
+    { transform: "rotate(0turn)" },
+    { transform: "rotate(1turn)" },
+]}>
+  <Card />
+</Animation>
+```
