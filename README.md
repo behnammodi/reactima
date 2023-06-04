@@ -4,7 +4,7 @@ Here are some basic example showcasing the usage of `reactima` in a React projec
 
 ## The first example:
 
-https://codesandbox.io/p/sandbox/reactima-forked-yinnjk
+https://codesandbox.io/p/sandbox/yinnjk
 
 In this example, we have implemented an animation where a card component moves from the left side to the right side. The animation begins with the card's opacity at 0 and gradually increases it to 1.
 
@@ -24,7 +24,7 @@ The card component remains unchanged in this example and only requires `forwardR
 
 ## The second example:
 
-https://codesandbox.io/p/sandbox/reactima-example-1-forked-b9njfx
+https://codesandbox.io/p/sandbox/b9njfx
 
 In this example, we have implemented an animation where a card component continuously rotates. We achieve this effect by using the `iterations` prop with a value of `Infinity`.
 
