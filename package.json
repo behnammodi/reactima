@@ -1,6 +1,6 @@
 {
   "name": "reactima",
-  "version": "0.0.0",
+  "version": "1.0.0-0",
   "description": "Animation for react projects",
   "main": "index.js",
   "scripts": {
@@ -30,5 +30,5 @@
   },
   "peerDependencies": {
     "react": "16"
-  }  
+  }
 }
