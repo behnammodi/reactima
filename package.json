@@ -7,7 +7,8 @@
     "test": "yarn test",
     "build": "tsc",
     "preversion": "yarn build",
-    "postversion": "npm publish"
+    "postversion": "npm publish",
+    "postpublish": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
