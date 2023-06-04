@@ -1,6 +1,6 @@
 {
   "name": "reactima",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "description": "Animation for react projects",
   "main": "index.js",
   "scripts": {
