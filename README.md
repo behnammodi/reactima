@@ -63,3 +63,27 @@ Here is an example showcasing the composition of multiple animations with differ
   </Animation>
 </Animation>
 ```
+
+## Interactively Controlled Animation example:
+
+https://codesandbox.io/p/sandbox/o1mplp
+
+Here is an example that demonstrates how to animate a card based on a mount and unmount interaction. In this example, the card animation is controlled by a `show` flag that determines whether the card should be displayed or hidden. When the `show` flag is `true`, the card is mounted and animated using the specified keyframes.
+
+```jsx
+const [show, setShow] = useState(false);
+
+<Animation
+  duration={500}
+  fill="both"
+  direction={show ? "normal" : "reverse"}
+  keyframes={[
+    { opacity: 0, transform: "translateX(0px)" },
+    { opacity: 1, transform: "translateX(500px)" },
+  ]}
+>
+  {show && <Card />}
+</Animation>
+```
+
+Inside the Animation component, fill is set to "both" to maintain the final state of the animation. The direction property is dynamically controlled by the show flag. When show is true, the animation plays in the normal direction. 
