@@ -1,0 +1,34 @@
+{
+  "name": "reactima",
+  "version": "0.0.0",
+  "description": "Animation for react projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn test",
+    "build": "tsc",
+    "preversion": "yarn build",
+    "postversion": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behnammodi/reactima.git"
+  },
+  "keywords": [
+    "react",
+    "animation",
+    "animate"
+  ],
+  "author": "Behnam Mohammadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/behnammodi/reactima/issues"
+  },
+  "homepage": "https://github.com/behnammodi/reactima#readme",
+  "devDependencies": {
+    "react": "^18.2.0",
+    "typescript": "^5.1.3"
+  },
+  "peerDependencies": {
+    "react": "16"
+  }  
+}
