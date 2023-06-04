@@ -40,7 +40,7 @@ In this example, we have implemented an animation where a card component continu
 </Animation>
 ```
 
-## Animation compose exmple:
+## Animation composition exmple:
 
 https://codesandbox.io/p/sandbox/0rm9xk
 
