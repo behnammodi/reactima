@@ -102,6 +102,11 @@ Import:
 import Animation from 'reactima';
 ```
 
+## Other exmaples:
+
+Reactima with styled-components:
+
+https://codesandbox.io/p/sandbox/b5dr16
 
 
 
