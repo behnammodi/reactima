@@ -70,13 +70,13 @@ const Animation: FC<Props> = forwardRef(
 
         refs.current.children = null;
         update((c) => c + 1);
-        animate?.removeEventListener("finish", handleFinish);
+        animate.removeEventListener("finish", handleFinish);
       }
 
       animate.addEventListener("finish", handleFinish);
 
       return () => {
-        animate?.removeEventListener("finish", handleFinish);
+        animate.removeEventListener("finish", handleFinish);
       }
     }, [children]);
 
