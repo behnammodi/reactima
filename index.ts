@@ -84,7 +84,6 @@ import React, {
       }, [next.current]);
   
       useEffect(() => {
-        console.log("innerRef.current", innerRef.current);
         let animate: Animation | undefined;
         if (innerRef.current) {
           animate = (innerRef.current as HTMLElement).animate(keyframes, {
@@ -94,7 +93,6 @@ import React, {
             iterations,
             easing,
             delay,
-            // composite: "accumulate",
           });
   
           animate.addEventListener("finish", handleFinish);
