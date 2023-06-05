@@ -1,17 +1,18 @@
-import React, {
-  useMemo,
+import {
   useRef,
   cloneElement,
   useState,
-  useEffect,
+  useLayoutEffect,
   forwardRef,
+  FC,
+  ReactElement,
 } from "react";
 
 interface Props {
   keyframes: Keyframe[] | PropertyIndexedKeyframes;
   duration: number;
   iterations?: number;
-  children?: React.ReactElement | boolean;
+  children?: ReactElement | boolean;
   direction?: PlaybackDirection;
   easing?:
   | "linear"
@@ -24,10 +25,7 @@ interface Props {
   delay?: number;
 }
 
-const isNothing = (e: any) => e === null || e === false || e === undefined;
-const isSomething = (e: any) => !isNothing(e);
-
-const Animation = forwardRef(
+const Animation: FC<Props> = forwardRef(
   (
     {
       keyframes,
@@ -38,87 +36,71 @@ const Animation = forwardRef(
       easing,
       fill,
       delay,
-    }: Props,
+    },
     ref
   ) => {
+    const [_, update] = useState(0);
     const refs = useRef<{
       dom: null | HTMLElement;
-      prev: Props["children"];
-      next: Props["children"];
+      children: ReactElement | boolean;
     }>({
       dom: null,
-      prev: children,
-      next: children,
+      children
     });
 
-    const [_, update] = useState(0);
+    useLayoutEffect(() => {
+      var keyframesEffect = new window.KeyframeEffect(
+        refs.current.dom,
+        keyframes,
+        { duration, fill, delay, easing, iterations, direction }
+      );
 
-    useMemo(() => {
-      if (
-        !(
-          refs.current.next !== children &&
-          isSomething(refs.current.prev) &&
-          isNothing(children)
-        )
-      ) {
-        refs.current.next = children;
-      }
-    }, [children]);
+      const animate = new window.Animation(keyframesEffect, document.timeline);
 
-    if (refs.current.prev !== refs.current.next) {
-      refs.current.prev = refs.current.next;
-    }
+      animate.play();
 
-    const Component = useMemo(() => {
-      if (isNothing(refs.current.next)) {
-        return null;
-      }
-
-      const NextChildren = refs.current.next as React.ReactElement;
-
-      return cloneElement(NextChildren, {
-        ...NextChildren.props,
-        ref: (forwardedRef: any) => {
-          refs.current.dom = forwardedRef;
-          if (ref instanceof Function) {
-            ref(forwardedRef);
-          } else if (ref?.current) {
-            ref.current = forwardedRef;
-          }
-        },
-      });
-    }, [refs.current.next]);
-
-    useEffect(() => {
-      let animate: Animation | undefined;
-      if (refs.current.dom) {
-        animate = refs.current.dom.animate(keyframes, {
-          duration,
-          fill,
-          direction,
-          iterations,
-          easing,
-          delay,
-        });
-
-        animate.addEventListener("finish", handleFinish);
-      }
-
-      function handleFinish(e: AnimationPlaybackEvent) {
-        if (isNothing(children)) {
-          refs.current.next = children;
-          update((c) => c + 1);
+      const handleFinish = () => {
+        if (children) {
+          return;
         }
+
+        if (!refs.current.children) {
+          return
+        }
+
+        refs.current.children = null;
+        update((c) => c + 1);
         animate?.removeEventListener("finish", handleFinish);
       }
+
+      animate.addEventListener("finish", handleFinish);
 
       return () => {
         animate?.removeEventListener("finish", handleFinish);
-        animate?.cancel();
-      };
+      }
     }, [children]);
 
-    return Component;
+    let target;
+
+    if (children) {
+      target = children;
+      refs.current.children = children
+    } else {
+      target = refs.current.children;
+    }
+
+    if (!target) {
+      return null;
+    }
+
+    return cloneElement(target, {
+      ...target.props, ref: (forwardedRef) => {
+        refs.current.dom = forwardedRef;
+        if (ref instanceof Function) {
+          ref(forwardedRef);
+        }
+      }
+    });
   }
 );
 
