@@ -8,7 +8,7 @@ import React, {
   } from "react";
   
   interface Props {
-    keyframes: Keyframe[];
+    keyframes: Keyframe[] | PropertyIndexedKeyframes;
     duration: number;
     iterations?: number;
     children?: React.ReactElement | boolean;

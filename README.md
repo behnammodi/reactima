@@ -88,6 +88,28 @@ const [show, setShow] = useState(false);
 
 Inside the Animation component, fill is set to "both" to maintain the final state of the animation. The direction property is dynamically controlled by the show flag. When show is true, the animation plays in the normal direction. 
 
+## Keyframes
+Keyframes can be defined as an object where each property represents a CSS property and its corresponding values. For example:
+```js
+keyframes={{
+  opacity: [0, 1],
+  transform: ['translateX(0px)', 'translateX(500px)']
+]}
+```
+
+Multiple values can also be passed for a property to create more complex animations. For instance:
+```js
+keyframes={{
+  opacity: [0, 1], // offset: 0, 1
+  transform: ['translateX(0px)', 'translateX(20px)','translateX(500px)'], // offset: 0, 0.5, 1
+]}
+
+```
+
+For more details, please refer to the MDN documentation on keyframe formats:
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats
+
+
 ## How to use it:
 
 Install:
