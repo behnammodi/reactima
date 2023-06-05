@@ -130,6 +130,13 @@ Reactima with styled-components:
 
 https://codesandbox.io/p/sandbox/b5dr16
 
+## Size:
+Less than 1kB:
+
+https://bundlephobia.com/package/reactima
+
+
+
 
 
 
