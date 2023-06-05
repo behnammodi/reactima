@@ -46,7 +46,6 @@ var Animation = (0, react_1.forwardRef)(function (_a, ref) {
             } }));
     }, [next.current]);
     (0, react_1.useEffect)(function () {
-        console.log("innerRef.current", innerRef.current);
         var animate;
         if (innerRef.current) {
             animate = innerRef.current.animate(keyframes, {
@@ -56,7 +55,6 @@ var Animation = (0, react_1.forwardRef)(function (_a, ref) {
                 iterations: iterations,
                 easing: easing,
                 delay: delay,
-                // composite: "accumulate",
             });
             animate.addEventListener("finish", handleFinish);
         }
