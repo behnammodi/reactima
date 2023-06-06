@@ -25,7 +25,7 @@ interface Props {
   delay?: number;
 }
 
-const Animation: FC<Props> = forwardRef(
+const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
   (
     {
       keyframes,
@@ -49,7 +49,7 @@ const Animation: FC<Props> = forwardRef(
     });
 
     useLayoutEffect(() => {
-      var keyframesEffect = new window.KeyframeEffect(
+      const keyframesEffect = new window.KeyframeEffect(
         refs.current.dom,
         keyframes,
         { duration, fill, delay, easing, iterations, direction }
@@ -94,7 +94,7 @@ const Animation: FC<Props> = forwardRef(
     }
 
     return cloneElement(target, {
-      ...target.props, ref: (forwardedRef) => {
+      ...target.props, ref: (forwardedRef: HTMLElement) => {
         refs.current.dom = forwardedRef;
         if (ref instanceof Function) {
           ref(forwardedRef);
