@@ -78,7 +78,7 @@ const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
       return () => {
         animate.removeEventListener("finish", handleFinish);
       }
-    }, [children]);
+    }, [children, direction]);
 
     let target;
 
