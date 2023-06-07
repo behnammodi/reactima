@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.1.1
 - `direction` prop can reacts to changes
 
 ## 1.0.0
