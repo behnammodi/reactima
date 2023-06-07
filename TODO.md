@@ -1,2 +1,4 @@
 - Write some examples for JSS
 - Write some examples for Emotion JS
+- Handle preserveInitialKeyframe
+    - Lab: https://codesandbox.io/p/sandbox/f21w9v
