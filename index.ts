@@ -37,6 +37,8 @@ const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
       children,
     });
 
+    const childrenType = isValidElement(children) && children.type;
+
     useLayoutEffect(() => {
       const keyframesEffect = new window.KeyframeEffect(
         refs.current.dom,
@@ -54,26 +56,26 @@ const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
         }
 
         if (!refs.current.children) {
-          return
+          return;
         }
 
-        refs.current.children = null;
+        refs.current.children = undefined;
         update((c) => c + 1);
         animate.removeEventListener("finish", handleFinish);
-      }
+      };
 
       animate.addEventListener("finish", handleFinish);
 
       return () => {
         animate.removeEventListener("finish", handleFinish);
-      }
-    }, [children.type]);
+      };
+    }, [childrenType]);
 
     let target;
 
     if (children) {
       target = children;
-      refs.current.children = children
+      refs.current.children = children;
     } else {
       target = refs.current.children;
     }
