@@ -6,23 +6,12 @@ import {
   forwardRef,
   FC,
   ReactElement,
+  isValidElement,
 } from "react";
 
-interface Props {
+interface Props extends EffectTiming {
   keyframes: Keyframe[] | PropertyIndexedKeyframes;
-  duration: number;
-  iterations?: number;
   children?: ReactElement | boolean;
-  direction?: PlaybackDirection;
-  easing?:
-  | "linear"
-  | "ease"
-  | "ease-in"
-  | "ease-out"
-  | "ease-in-out"
-  | `cubic-bezier(${number},${number},${number},${number})`;
-  fill?: FillMode;
-  delay?: number;
 }
 
 const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
