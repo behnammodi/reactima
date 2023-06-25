@@ -80,17 +80,24 @@ const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
       target = refs.current.children;
     }
 
-    if (!target) {
+    const isTargetAReactElemet = (
+      target: Props["children"]
+    ): target is ReactElement => {
+      return isValidElement(target);
+    };
+
+    if (!isTargetAReactElemet(target)) {
       return null;
     }
 
     return cloneElement(target, {
-      ...target.props, ref: (forwardedRef: HTMLElement) => {
+      ...target.props,
+      ref: (forwardedRef: HTMLElement) => {
         refs.current.dom = forwardedRef;
         if (ref instanceof Function) {
           ref(forwardedRef);
         }
-      }
+      },
     });
   }
 );
