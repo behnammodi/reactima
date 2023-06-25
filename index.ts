@@ -31,10 +31,10 @@ const Animation: FC<Props> = forwardRef<HTMLElement, Props>(
     const [_, update] = useState(0);
     const refs = useRef<{
       dom: null | HTMLElement;
-      children: ReactElement | boolean;
+      children: Props["children"];
     }>({
       dom: null,
-      children
+      children,
     });
 
     useLayoutEffect(() => {
